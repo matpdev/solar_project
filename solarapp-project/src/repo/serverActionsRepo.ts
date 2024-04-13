@@ -3,7 +3,7 @@
 export async function getAllPositions() {
   try {
     let data = await (
-      await fetch("http://localhost:8000", {
+      await fetch(`${process.env.NEXT_PUBLIC_URL}`, {
         next: {
           revalidate: 0,
         },
@@ -18,7 +18,7 @@ export async function getAllPositions() {
 export async function getAllPositionsRandom() {
   try {
     let data = await (
-      await fetch("http://localhost:8000/random", {
+      await fetch(`${process.env.NEXT_PUBLIC_URL}random`, {
         next: {
           revalidate: 0,
         },
