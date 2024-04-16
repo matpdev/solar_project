@@ -51,8 +51,6 @@ export default function MapComponent({
     setIsLoading(false);
   }, []);
 
-  console.log(insightOfThebuilding);
-
   return (
     <div className="w-full h-full">
       <GoogleMap

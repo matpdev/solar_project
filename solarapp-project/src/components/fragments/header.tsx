@@ -67,6 +67,15 @@ export default function Header() {
             height: "calc(100vh - 350px)",
           }}
         >
+          {locations.filter(
+            (x) => x.name.toLowerCase().includes(search.toLowerCase()) && x
+          ).length == 0 && (
+            <div className="w-full h-full flex items-center justify-center">
+              <p className="text-xl font-semibold">
+                Nenhum local encontrado com este nome
+              </p>
+            </div>
+          )}
           {locations
             .filter(
               (x) => x.name.toLowerCase().includes(search.toLowerCase()) && x

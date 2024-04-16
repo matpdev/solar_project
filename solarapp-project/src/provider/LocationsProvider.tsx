@@ -45,6 +45,8 @@ export default function LocationProvider({
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((e) => {
         setMyPosition(e);
+        setPosition({ lat: e.coords.latitude, lng: e.coords.longitude });
+        setZoom(18);
       });
     }
   }, []);
