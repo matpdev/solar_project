@@ -56,6 +56,8 @@ export default function Locations() {
               }
             }}
             isSelected={location.isSelected}
+            lat={location.lat}
+            lng={location.lng}
           ></LocationItem>
         ))}
     </div>
