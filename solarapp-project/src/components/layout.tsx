@@ -6,6 +6,7 @@ import Footer from "./fragments/footer";
 import { useLocationsContext } from "@/context/locationsContext";
 import Insights from "./insignts";
 import HeaderLayout from "./fragments/header-layout";
+import { motion } from "framer-motion";
 
 export default function LayoutAboveAll({
   children,
@@ -27,11 +28,35 @@ export default function LayoutAboveAll({
             <CircularProgress></CircularProgress>
           </div>
         )}
-        {!isLoading && insightOfThebuilding != null && (
-          <div className="w-1/3 h-full bg-white hidden md:block">
-            <Insights></Insights>
-          </div>
-        )}
+        {/* {!isLoading && insightOfThebuilding != null && ( */}
+        <motion.div
+          className="w-1/3 h-full bg-white md:block"
+          animate={!isLoading && insightOfThebuilding != null ? "show" : "hide"}
+          variants={{
+            show: {
+              opacity: 1,
+              x: 0,
+              transition: {
+                ease: "easeOut",
+                duration: 0.3,
+              },
+              display: "block",
+            },
+            hide: {
+              x: -1020,
+              opacity: 0,
+              transitionEnd: {
+                display: "none",
+              },
+            },
+          }}
+          style={{
+            display: "none",
+          }}
+        >
+          <Insights></Insights>
+        </motion.div>
+        {/* )} */}
         <div className="w-full h-full">
           <Header />
           <div className="w-full h-full">{children}</div>
