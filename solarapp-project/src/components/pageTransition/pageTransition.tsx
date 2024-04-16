@@ -30,7 +30,6 @@ const variants = {
 };
 
 const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
-  // The `key` is tied to the url using the `usePathname` hook.
   const key = usePathname();
 
   return (

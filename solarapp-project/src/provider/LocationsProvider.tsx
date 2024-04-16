@@ -17,11 +17,12 @@ export default function LocationProvider({
       : []
   );
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [zoom, setZoom] = React.useState<number>(12);
   const [insight, setInsight] = React.useState<any>(null);
 
   let [position, setPosition] = React.useState({
-    lat: 37.44770507437111,
-    lng: -122.1591258640483,
+    lat: -5.800679461020519,
+    lng: -35.21531137091306,
   });
 
   const [currentActiveLocation, setCurrentActiveLocation] =
@@ -40,6 +41,8 @@ export default function LocationProvider({
   return (
     <LocationsContext.Provider
       value={{
+        zoom,
+        setZoom,
         locations: locations,
         handleLocationClick,
         currentActiveLocation: currentActiveLocation,
@@ -49,6 +52,7 @@ export default function LocationProvider({
         setInsightOfThebuilding: setInsight,
         isLoading,
         setIsLoading,
+        setLocations,
       }}
     >
       {children}

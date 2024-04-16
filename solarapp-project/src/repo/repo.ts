@@ -7,5 +7,7 @@ export async function getInsights(lat: number, lng: number) {
 
   if (!("error" in data.data)) return data.data;
 
-  return null;
+  return {
+    error: "Local não encontrado",
+  };
 }

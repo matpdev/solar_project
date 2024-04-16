@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import LocationProvider from "@/provider/LocationsProvider";
-import { IResponseAPI } from "@/types/requestsTypes";
-import { MapProvider } from "@/provider/MapProvider";
-import { getRandomPos } from "@/utils/utils";
-import { getAllPositions } from "@/repo/serverActionsRepo";
-import PageTransitionEffect from "@/components/pageTransition/pageTransition";
+import Providers from "@/provider/Providers";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -23,15 +18,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let allData = await getAllPositions();
   return (
     <html lang="en">
       <body className={inter.className}>
-        <PageTransitionEffect>
-          <LocationProvider locationsData={allData}>
-            <MapProvider>{children}</MapProvider>
-          </LocationProvider>
-        </PageTransitionEffect>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
