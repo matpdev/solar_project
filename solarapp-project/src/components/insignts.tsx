@@ -1,7 +1,6 @@
 "use client";
 
 import MapComponent from "@/components/map";
-import HomeComponent from "@/components/screen/home";
 import { useLocationsContext } from "@/context/locationsContext";
 import { IResponseAPI } from "@/types/requestsTypes";
 import Image from "next/image";
