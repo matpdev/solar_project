@@ -33,15 +33,15 @@ export default function LocationItem({
         )}
       >
         <CardHeader>
-          <p className="font-semibold text-xl">{title}</p>
+          <p className="font-semibold text-medium sm:text-xl">{title}</p>
         </CardHeader>
         <Divider></Divider>
         <CardBody>
-          <p>Endereço: {street}</p>
+          <p className="text-sm sm:text-medium">Endereço: {street}</p>
         </CardBody>
         <Divider></Divider>
         <CardFooter>
-          <p>
+          <p className="text-xs sm:text-medium">
             Latitude: {lat} | Longitude: {lng}
           </p>
         </CardFooter>

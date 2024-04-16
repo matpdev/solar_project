@@ -12,7 +12,7 @@ export default function Footer() {
     useLocationsContext();
   return (
     <motion.div
-      className="absolute bottom-6 left-0 right-0 bg-white mx-auto rounded-lg w-10/12 md:!hidden"
+      className="absolute bottom-6 left-0 right-0 bg-white mx-auto rounded-lg w-10/12 md:!hidden shadow-md"
       key="animation-on-state"
       animate={!isLoading && insightOfThebuilding != null ? "show" : "hide"}
       variants={{
@@ -35,11 +35,11 @@ export default function Footer() {
       }}
       style={{
         display: "none",
-        height: "calc(100vh / 2)",
+        height: "calc(100vh * 0.45)",
       }}
     >
       <div
-        className="absolute top-0 right-0 w-10 h-10 flex justify-center items-center z-40"
+        className="absolute top-0 right-0 w-10 h-10 flex justify-center items-center cursor-pointer hover:bg-warning-400 transition-all rounded-full m-2 hover:text-white"
         onClick={() => {
           setInsightOfThebuilding(null);
         }}

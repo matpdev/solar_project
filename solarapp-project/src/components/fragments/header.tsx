@@ -1,4 +1,4 @@
-import { Input } from "@nextui-org/react";
+import { Input, ScrollShadow } from "@nextui-org/react";
 import React, { useState } from "react";
 import { MdSearch } from "react-icons/md";
 
@@ -30,7 +30,7 @@ export default function Header() {
           }}
           color="primary"
           classNames={{
-            inputWrapper: "bg-white",
+            inputWrapper: "bg-white shadow-md",
           }}
           placeholder="Digite a sua pesquisa"
           onFocus={() => {
@@ -41,7 +41,7 @@ export default function Header() {
           }}
         />
         <motion.div
-          className="w-full m-10 absolute top-4 left-0 right-0 bg-white mx-auto rounded-lg p-2 px-3 overflow-scroll md:w-11/12"
+          className="w-full m-10 absolute top-4 left-0 right-0 bg-white mx-auto rounded-lg p-2 px-3 overflow-scroll md:w-11/12 z-50 shadow-md"
           key="animation-on-state"
           animate={animation ? "show" : "hide"}
           variants={{
@@ -64,7 +64,7 @@ export default function Header() {
           }}
           style={{
             display: "none",
-            height: "calc(100vh - 250px)",
+            height: "calc(100vh - 350px)",
           }}
         >
           {locations
@@ -83,7 +83,6 @@ export default function Header() {
                   setPosition({ lat: location.lat, lng: location.lng });
                   if (isLoading) return;
                   setIsLoading(true);
-                  console.log("i", index);
                   try {
                     let data = await getInsights(location.lat, location.lng);
                     setInsightOfThebuilding(data);

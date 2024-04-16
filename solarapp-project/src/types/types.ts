@@ -18,4 +18,5 @@ export interface ILocationsContext {
   isLoading: boolean;
   setIsLoading: React.Dispatch<boolean>;
   setLocations: React.Dispatch<React.SetStateAction<IStateLocations[]>>;
+  myPosition: GeolocationPosition | null;
 }

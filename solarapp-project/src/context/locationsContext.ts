@@ -20,6 +20,7 @@ export const LocationsContext = createContext<ILocationsContext>({
   isLoading: false,
   setIsLoading: () => {},
   setLocations: () => {},
+  myPosition: null,
 });
 
 export const useLocationsContext = () => {

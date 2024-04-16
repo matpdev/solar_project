@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IResponseAPI, IStateLocations } from "@/types/requestsTypes";
 import { LocationsContext } from "@/context/locationsContext";
 
@@ -15,6 +15,9 @@ export default function LocationProvider({
     locationsData.length > 0
       ? locationsData.map((location) => ({ ...location, isSelected: false }))
       : []
+  );
+  const [myPosition, setMyPosition] = useState<GeolocationPosition | null>(
+    null
   );
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [zoom, setZoom] = React.useState<number>(12);
@@ -38,6 +41,14 @@ export default function LocationProvider({
     setCurrentActiveLocation(copyLocations[index]);
   }
 
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((e) => {
+        setMyPosition(e);
+      });
+    }
+  }, []);
+
   return (
     <LocationsContext.Provider
       value={{
@@ -53,6 +64,7 @@ export default function LocationProvider({
         isLoading,
         setIsLoading,
         setLocations,
+        myPosition,
       }}
     >
       {children}

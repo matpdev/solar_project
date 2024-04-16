@@ -5,18 +5,22 @@ import {
   HeatmapLayer,
   InfoWindow,
   Marker,
+  OverlayView,
   useGoogleMap,
 } from "@react-google-maps/api";
 import { useLocationsContext } from "@/context/locationsContext";
 import { IStateLocations } from "@/types/requestsTypes";
 
+import IconUser from "@/utils/icon-user.json";
+
 import { IoTriangle } from "react-icons/io5";
 import { getInsights } from "@/repo/repo";
+import Lottie from "lottie-react";
 
 const defaultMapContainerStyle = {
   width: "100%",
   height: "100%",
-  borderRadius: "15px 0px 0px 15px",
+  borderRadius: "15px 15px 0px 0px",
 };
 
 const defaultMapZoom = 12;
@@ -38,6 +42,7 @@ export default function MapComponent({
     isLoading,
     setZoom,
     zoom,
+    myPosition,
   } = useLocationsContext();
 
   useEffect(() => {
@@ -93,6 +98,24 @@ export default function MapComponent({
             )}
           </Marker>
         ))}
+        {myPosition != null && (
+          <OverlayView
+            position={{
+              lat: myPosition?.coords.latitude,
+              lng: myPosition?.coords.longitude,
+            }}
+            mapPaneName={"floatPane"}
+          >
+            <div className="flex flex-col items-center justify-center text-center">
+              <Lottie
+                animationData={IconUser}
+                style={{
+                  width: 25,
+                }}
+              />
+            </div>
+          </OverlayView>
+        )}
       </GoogleMap>
     </div>
   );
