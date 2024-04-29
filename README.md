@@ -1,5 +1,5 @@
 # Solar Project
-### Projeto criado para o teste da vaga de desenvolvedor
+### Projeto criado para demonstração de uso do Google Maps e dados solares
 
 
 ![Imagem](/Screenshot%202024-04-11%20at%2013.50.13.png)
